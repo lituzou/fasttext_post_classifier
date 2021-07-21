@@ -102,8 +102,8 @@ def run_training(model_path):
 
     if model_path is not None:
         torch.save(model.state_dict(), f"{model_path}.pth")
-        np.save(f'{model_path}_label_enc.npy')
-        np.save(f'{model_path}_vocab_enc.npy')
+        np.save(f'{model_path}_label_enc.npy', label_enc.classes_)
+        np.save(f'{model_path}_vocab_enc.npy', vocab_enc.categories_)
     
 
 if __name__ == '__main__':
