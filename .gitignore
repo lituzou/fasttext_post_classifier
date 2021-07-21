@@ -1,5 +1,7 @@
 ### Custom ###
 raw_data/
+*.pth
+*.npy
 
 
 
