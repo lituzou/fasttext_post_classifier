@@ -10,7 +10,8 @@ class FastText(nn.Module):
     def __init__(self, num_classes, num_vocab, padding_enc):
         super(FastText, self).__init__()
         char_dim = 300
-        self.embedding1 = nn.Embedding(num_vocab, char_dim, padding_idx=padding_enc)
+        self.embedding1 = nn.Embedding(
+            num_vocab, char_dim, padding_idx=padding_enc)
         self.embedding2 = nn.Embedding(config.NGRAM_VOCAB_SIZE, char_dim)
         self.embedding3 = nn.Embedding(config.NGRAM_VOCAB_SIZE, char_dim)
         self.dropout = nn.Dropout(0.2)

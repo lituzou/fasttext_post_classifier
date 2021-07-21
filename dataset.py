@@ -5,7 +5,7 @@ class ClassificationDataset:
     def __init__(self, titles, targets):
         self.titles = titles
         self.targets = targets
-    
+
     def __len__(self):
         return len(self.titles)
 

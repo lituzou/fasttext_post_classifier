@@ -2,6 +2,7 @@ from tqdm import tqdm
 import torch
 import config
 
+
 def train_fn(model, data_loader, optimizer):
     model.train()
     final_loss = 0
