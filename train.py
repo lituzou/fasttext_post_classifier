@@ -54,12 +54,11 @@ def run_training(model_path):
         test_preds, test_loss = engine.eval_fn(model, test_loader)
         test_preds = torch.argmax(test_preds, dim=1)
         test_preds = test_preds.detach().cpu().numpy()
-        for i, item in enumerate(zip(test_preds, test_targets)):
-            if i < 10:
-                print(item, end=',')
-            else:
-                print()
-                break
+        for label_class in label_enc.classes_:
+            class_code = label_enc.transform([label_class])[0]
+            class_acc = np.sum((test_targets == class_code) & (test_targets == test_preds)) / np.sum(test_targets == class_code)
+            print(f'{label_class}: {class_acc}', end='\t')
+        print()
         accuracy = metrics.accuracy_score(test_targets, test_preds)
         print(
             f'Epoch={epoch}, train loss={train_loss}, test_loss={test_loss}, accuracy={accuracy}')
